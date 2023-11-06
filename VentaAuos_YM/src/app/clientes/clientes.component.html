@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <form [formGroup]="formularioCliente">
+    <div class='container-fluid'>
+      <div class="bg-dark">
+        <ul>
+          <li class="card text-white bg-dark"><h1>{{tituloPagina}}</h1>
+            <div class="row">
+              <div class="mb-3 btn-secondary-outline">
+  
+                <label for="id" class="form-label">Id</label>
+                <input type="number"[(ngModel)]="cliente.id" class="form-control" id="id">
+              </div>
+    
+              <div class="mb-3 btn-secondary-outline"><label for="nombre" class="form-label">Nombre</label>
+                <input type="text"[(ngModel)]="cliente.nombre" class="form-control" id="nombre"></div>
+              
+                <div class="mb-3 btn-secondary-outline"><label for="apellido" class="form-label">Apellido</label>
+                <input type="text"[(ngModel)]="cliente.apellido" class="form-control" id="apellido"></div>
+    
+              <div class="mb-3 btn-secondary-outline"><label for="telefono" class="form-label">Telefono</label>
+                <input type="number"[(ngModel)]="cliente.telefono" class="form-control" id="telefono"></div>
+    
+              <div class="mb-3 btn-secondary-outline">
+                <label for="email" class="form-label">Correo Electronico</label>
+                <input type="email"[(ngModel)]="cliente.email" class="form-control" id="email">
+              </div>
+    
+              <th>
+                <div class="mb-3 btn-secondary-outline">
+                  <button class='btn btn-secondary text white' style="width:110px" (click)="guardarCliente()">
+                  Guardar registro </button>
+                </div>
+              </th>
+              <th>
+                <div class="mb-3 btn-secondary-outline">
+                <button class='btn btn-secondary text white' style="width:110px" (click)="goInicio()">
+                Home </button>
+              </div></th>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="modal fade" #exampleModal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-body">
+        <form [formGroup]="formularioCliente" class="needs-validation" [ngClass]="{'was-validated': wasValidated}">
+          <div class="mb-3">
+            <label for="formControlid" class="form-label">Id</label>
+            <input type="text" class="form-control" id="formControlid" formControlName="id" required minlength="3">
+            <app-msjValidacion [summited]="wasValidated" [control]="formularioCliente.controls['id']"></app-msjValidacion>
+          </div>
+
+          <div class="mb-3">
+            <label for="formControlnombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="formControlnombre" formControlName="nombre" required>
+            <app-msjValidacion [summited]="wasValidated" [control]="formularioCliente.controls['nombre']"></app-msjValidacion>
+          </div>
+
+          <div class="mb-3">
+            <label for="formControlapellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="formControlapellido" formControlName="apellido" required>
+            <app-msjValidacion [summited]="wasValidated" [control]="formularioCliente.controls['apellido']"></app-msjValidacion>
+          </div>
+
+          <div class="mb-3">
+            <label for="formControltelefono" class="form-label">Telefono</label>
+            <input type="number" class="form-control" id="formControltelefono" formControlName="telefono" max="10" required>
+            <app-msjValidacion [summited]="wasValidated" [control]="formularioCliente.controls['telefono']"></app-msjValidacion>
+          </div>
+
+          <div class="mb-3">
+            <label for="formControlemail" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control" id="formControlControlemail" formControlName="email">
+            <app-msjValidacion [summited]="wasValidated" [control]="formularioCliente.controls['email']"></app-msjValidacion>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
